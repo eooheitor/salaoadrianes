@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -103,13 +102,6 @@
         </div><!-- End Logo -->
     </div>
 
-    <div class="search-bar">
-        <form class="search-form d-flex align-items-center" method="POST" action="#">
-            <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-            <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-        </form>
-    </div><!-- End Search Bar -->
-
     <nav class="header-nav ms-auto">
         <ul class="d-flex align-items-center">
 
@@ -120,20 +112,43 @@
             </li><!-- End Search Icon-->
 
             <li class="nav-item dropdown pe-3">
-
+                <?php $user = Auth::user();
+                
+                if ($user) {
+                    $nome = $user->name;
+                }
+                ?>
                 <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                    <img src="/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-                    <span class="d-none d-md-block dropdown-toggle ps-2">Heitor</span>
+                    {{-- <img src="/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle"> --}}
+                    <span class="d-none d-md-block dropdown-toggle ps-2">{{ $nome }}</span>
                 </a><!-- End Profile Iamge Icon -->
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                    <?php if (Auth::check()) {
+                        // O usuário está autenticado
+                    ?>
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="logout.php">
-                            <i class="bi bi-box-arrow-right"></i>
-                            <span class="">Sair</span>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <x-dropdown-link :href="route('logout')"
+                                onclick="event.preventDefault();
+                                                this.closest('form').submit();"
+                                class="dropdown-item">
+                                {{ __('Sair') }}
+                            </x-dropdown-link>
+                        </form>
+                    </li>
+                    <?php } ?>
+                    <li>
+                        <a class="dropdown-item" href="{{ route('register') }}"
+                            onclick="event.preventDefault(); window.location.href='{{ route('register') }}';">
+                            {{ __('Criar conta') }}
                         </a>
                     </li>
+
                 </ul>
+
+
             </li>
 
         </ul>
