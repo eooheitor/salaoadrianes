@@ -99,7 +99,7 @@
                                         </tbody>
                                         @endif
                                     </table>
-                                    <a href="/criar/clientes"><button class="btn btn-primary btn-1">Cadastrar</button></a>
+                                    <a href="/clientes/create"><button class="btn btn-primary btn-1">Cadastrar</button></a>
                                 </div>
                             </div>
                         </div>

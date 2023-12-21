@@ -86,7 +86,7 @@
                                         </tbody>
                                         @endif
                                     </table>
-                                    <a href="/criar/profissionais"><button
+                                    <a href="/profissionais/create"><button
                                             class="btn btn-primary btn-1">Cadastrar</button></a>
                                 </div>
                             </div>

@@ -114,7 +114,7 @@
                                         </tbody>
                                         {{-- @endif --}}
                                     </table>
-                                    <a href="/criar/vendaprodutos"><button
+                                    <a href="/vendaprodutos/create"><button
                                             class="btn btn-primary btn-1">Cadastrar</button></a>
                                 </div>
                                 <form action="{{ route('geraPDF') }}" method="post" class="form-inline">

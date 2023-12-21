@@ -111,7 +111,7 @@
                                         </tbody>
                                         @endif
                                     </table>
-                                    <a href="/criar/vendaservicos"><button
+                                    <a href="/vendaservicos/create"><button
                                             class="btn btn-primary btn-1">Cadastrar</button></a>
                                 </div>
 
