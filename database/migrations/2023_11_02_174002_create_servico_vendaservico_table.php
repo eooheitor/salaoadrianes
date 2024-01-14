@@ -18,8 +18,8 @@ return new class extends Migration
                 $table->timestamps();
 
                 // Adicionar as chaves estrangeiras
-                $table->foreign('servico_id')->references('id')->on('servico');
-                $table->foreign('vendaservico_id')->references('id')->on('vendaservico');
+                $table->foreign('servico_id')->references('id')->on('servico')->onDelete('cascade');
+                $table->foreign('vendaservico_id')->references('id')->on('vendaservico')->onDelete('cascade');
             });
         }
     }

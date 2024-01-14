@@ -9,7 +9,11 @@
                         <div class="card mt-2">
                             <div class="card-body">
                                 <h5 class="card-title">Tabela de Produtos</h5>
-                                <div class="col-md-4">
+                                <div class="col-md-12 d-flex justify-content-between">
+                                    <div class="botao">
+                                        <a href="/produtos/create"><button
+                                                class="btn btn-primary btn-1">Cadastrar</button></a>
+                                    </div>
                                     <form action="" method="GET">
                                         <input type="text" id="search" name="search" placeholder="Procure um Produto"
                                             class="form-control mb-4">
@@ -32,6 +36,7 @@
                                                     <th scope="col">Nome</th>
                                                     <th scope="col">Quantidade</th>
                                                     <th scope="col">Tamanho</th>
+                                                    <th scope="col">Valor</th>
                                                     <th scope="col">CodProduto</th>
                                                     <th scope="col">Data Compra</th>
                                                 </tr>
@@ -84,6 +89,7 @@
                                                     <td>{{ $product->nome }}</td>
                                                     <td>{{ $product->quantidade }}</td>
                                                     <td>{{ $product->tamanho }}</td>
+                                                    <td>{{ $product->valor }}</td>
                                                     <td>{{ $product->codproduto }}</td>
                                                     <td>{{ date('d/m/Y', strtotime($product->datacompra)) }}</td>
                                                     {{-- <td>
@@ -98,7 +104,7 @@
                                         </tbody>
                                         @endif
                                     </table>
-                                    <a href="/produtos/create"><button class="btn btn-primary btn-1">Cadastrar</button></a>
+                                    {{-- <a href="/produtos/create"><button class="btn btn-primary btn-1">Cadastrar</button></a> --}}
                                 </div>
                             </div>
                         </div>

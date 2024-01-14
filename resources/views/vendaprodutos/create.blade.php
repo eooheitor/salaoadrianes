@@ -44,7 +44,7 @@
                                 </div>
                                 <div class="col-12">
                                     <label for="" class="form-label">Valor</label>
-                                    <input type="number" class="form-control" name="valor">
+                                    <input type="text" class="form-control" name="valor">
                                 </div>
                                 <div class="col-12">
                                     <label for="" class="form-label">Método Pagamento</label>
@@ -52,6 +52,9 @@
                                         <option value="Cartão">Cartão</option>
                                         <option value="Dinheiro">Dinheiro</option>
                                         <option value="Pix">Pix</option>
+                                        <option value="Boleto">Boleto</option>
+                                        <option value="Deve">Deve</option>
+                                        <option value="Pago - Ficha">Pago - Ficha</option>
                                     </select>
                                 </div>
                                 <div class="col-12">

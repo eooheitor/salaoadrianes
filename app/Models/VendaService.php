@@ -20,4 +20,10 @@ class VendaService extends Model
     {
         return $this->belongsTo(Professional::class, 'profissional_id', 'id');
     }
+
+    public function servicos()
+    {
+        return $this->hasMany(ServicoVendaService::class, 'vendaservico_id')->onDelete('cascade');
+    }
+    
 }

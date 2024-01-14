@@ -1,5 +1,5 @@
 
-<?php 
+<?php
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
@@ -90,3 +90,10 @@ Route::middleware(['auth'])->group(function () {
 // Rotas de login e logout
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+
+Route::get('/{sUrlParam}', function ($sUrlParam) {
+    if ($sUrlParam == 'home') {
+        return Redirect::to('/');
+    }
+    // ... outras rotas e lógica
+})->where('sUrlParam', '.*');

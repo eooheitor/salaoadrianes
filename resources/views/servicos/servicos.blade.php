@@ -10,7 +10,11 @@
                         <div class="card mt-2">
                             <div class="card-body">
                                 <h5 class="card-title">Tabela de Serviços</h5>
-                                <div class="col-md-4">
+                                <div class="col-md-12 d-flex justify-content-between">
+                                    <div class="botao">
+                                        <a href="/servicos/create"><button
+                                                class="btn btn-primary btn-1">Cadastrar</button></a>
+                                    </div>
                                     <form action="" method="GET">
                                         <input type="text" id="search" name="search" placeholder="Procure um Serviço"
                                             class="form-control mb-4">
@@ -27,11 +31,11 @@
                                             @elseif(count($servicos) == 0)
                                                 <h2 class="">Não há Serviços cadastrados</h2>
                                             @else
-                                            <tr>
-                                                <th scope="col"></th>
-                                                <th scope="col">#</th>
-                                                <th scope="col">Serviço</th>
-                                            </tr>
+                                                <tr>
+                                                    <th scope="col"></th>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Serviço</th>
+                                                </tr>
                                         </thead>
                                         <tbody>
                                             @foreach ($servicos as $servico)
@@ -77,8 +81,8 @@
                                                             <button class="btn-icon2"><i
                                                                     class="bi bi-pencil-square"></i></button></a>
                                                     </td>
-                                                    <th scope="row">{{$servico->id}}</th>
-                                                    <td>{{$servico->nome}}</td>
+                                                    <th scope="row">{{ $servico->id }}</th>
+                                                    <td>{{ $servico->nome }}</td>
                                                     <td></td>
                                                     <td></td>
                                                     <td></td>
@@ -88,7 +92,7 @@
                                         </tbody>
                                         @endif
                                     </table>
-                                    <a href="/servicos/create"><button class="btn btn-primary btn-1">Cadastrar</button></a>
+                                    {{-- <a href="/servicos/create"><button class="btn btn-primary btn-1">Cadastrar</button></a> --}}
                                 </div>
                             </div>
                         </div>

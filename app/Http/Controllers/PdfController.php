@@ -13,16 +13,11 @@ class PdfController extends Controller
 
   public function generatePDF(Request $request)
   {
-    // $startDate = $request->input('start_date');
-    // $endDate = $request->input('end_date');
-
-    // $vendaservicos = VendaService::whereBetween('datavenda', [$startDate, $endDate])->get();
-
-    // $venda = ServicoVendaService::with('servico')->get();
 
     $startDate = $request->input('start_date');
     $endDate = $request->input('end_date');
     $metodoPagamento = $request->input('metodopagamento');
+    $profissional = $request->input('profissional');
 
     $query = VendaService::whereBetween('datavenda', [$startDate, $endDate]);
 
@@ -30,6 +25,11 @@ class PdfController extends Controller
       $query->where('metodopagamento', $metodoPagamento);
     }
 
+    if ($profissional) {
+      $query->whereHas('profissional', function ($queryProfissional) use ($profissional) {
+        $queryProfissional->where('nome', $profissional);
+      });
+    }
     $vendaservicos = $query->get();
 
     $venda = ServicoVendaService::with('servico')->get();

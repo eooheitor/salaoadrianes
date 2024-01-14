@@ -9,13 +9,23 @@
                         <div class="card mt-2">
                             <div class="card-body">
                                 <h5 class="card-title">Tabela de Venda de Serviços</h5>
-                                <div class="col-md-4">
-                                    <form action="" method="GET">
-                                        <input type="text" id="search" name="search" placeholder="Procure uma Venda"
-                                            class="form-control mb-4">
-                                        <!-- <button type="submit" class="btn btn-primary">Enviar</button> -->
+                                <div class="col-md-12 d-flex justify-content-between mb-4">
+                                    <div class="botao">
+                                        <a href="/vendaservicos/create"><button
+                                                class="btn btn-primary btn-1">Cadastrar</button></a>
+                                    </div>
+                                    <form action="" method="GET" class="form-inline">
+                                        <input type="date" id="search" name="search" placeholder=""
+                                            class="form-control mr-2">
+                                        <button class="btn btn-primary btn-1" type="submit">Filtrar</button>
                                     </form>
                                 </div>
+                                <?php if($search) { ?>
+                                <div class="ml-3 mb-3">
+                                    <a href="/vendaservicos"><button class="btn btn-primary btn-1">Limpar
+                                            Filtro</button></a>
+                                </div>
+                                <?php } ?>
                                 <div class="table-responsive">
                                     <table class="table table-striped">
                                         <thead>
@@ -111,29 +121,39 @@
                                         </tbody>
                                         @endif
                                     </table>
-                                    <a href="/vendaservicos/create"><button
-                                            class="btn btn-primary btn-1">Cadastrar</button></a>
                                 </div>
 
 
                                 <form action="{{ route('generatePDF') }}" method="post" class="form-inline">
                                     @csrf
                                     <div class="row mt-5">
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-3">
                                             <label for="start_date">Data de início:</label>
                                             <input type="date" name="start_date" class="form-control">
                                         </div>
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-3">
                                             <label for="end_date">Data de fim:</label>
                                             <input type="date" name="end_date" class="form-control">
                                         </div>
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-3">
                                             <label for="metodopagamento">Método de Pagamento:</label>
                                             <select class="form-control padding-select" name="metodopagamento">
                                                 <option value="">Todos</option>
                                                 <option value="Cartão">Cartão</option>
                                                 <option value="Dinheiro">Dinheiro</option>
                                                 <option value="Pix">Pix</option>
+                                                <option value="Boleto">Boleto</option>
+                                                <option value="Deve">Deve</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <label for="profissional">Profissional:</label>
+                                            <select class="form-control padding-select" name="profissional">
+                                                <option value="">Todos</option>
+                                                @foreach ($profissionais as $profissional)
+                                                    <option value="{{ $profissional['nome'] }}">
+                                                        {{ $profissional['nome'] }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-1 mt-4">Imprimir</button>

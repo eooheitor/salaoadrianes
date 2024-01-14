@@ -69,6 +69,16 @@
                                         <option value="Cartão"
                                             {{ $vendaservicos->metodopagamento === 'Cartão' ? 'selected' : '' }}>Cartão
                                         </option>
+                                        <option value="Boleto"
+                                            {{ $vendaservicos->metodopagamento === 'Boleto' ? 'selected' : '' }}>Boleto
+                                        </option>
+                                        <option value="Deve"
+                                            {{ $vendaservicos->metodopagamento === 'Deve' ? 'selected' : '' }}>Deve
+                                        </option>
+                                        <option value="Pago - Ficha"
+                                            {{ $vendaservicos->metodopagamento === 'Pago - Ficha' ? 'selected' : '' }}>Pago
+                                            - Ficha
+                                        </option>
                                     </select>
                                 </div>
                                 <div class="col-12">

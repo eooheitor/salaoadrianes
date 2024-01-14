@@ -9,7 +9,11 @@
                         <div class="card mt-2">
                             <div class="card-body">
                                 <h5 class="card-title">Tabela de Clientes</h5>
-                                <div class="col-md-4">
+                                <div class="col-md-12 d-flex justify-content-between">
+                                    <div class="botao">
+                                        <a href="/clientes/create"><button
+                                                class="btn btn-primary btn-1">Cadastrar</button></a>
+                                    </div>
                                     <form action="" method="GET">
                                         <input type="text" id="search" name="search" placeholder="Procure um cliente"
                                             class="form-control mb-4">
@@ -19,9 +23,6 @@
                                 @if ($search)
                                     <h5>Buscando por: {{ $search }}</h5>
                                 @endif
-                                <!-- @if (session('msg'))
-    <p class="msg"> {{ session('msg') }} </p>
-    @endif -->
                                 <div class="table-responsive">
                                     <table class="table table-striped">
                                         <thead>
@@ -99,7 +100,7 @@
                                         </tbody>
                                         @endif
                                     </table>
-                                    <a href="/clientes/create"><button class="btn btn-primary btn-1">Cadastrar</button></a>
+                                    {{-- <a href="/clientes/create"><button class="btn btn-primary btn-1">Cadastrar</button></a> --}}
                                 </div>
                             </div>
                         </div>

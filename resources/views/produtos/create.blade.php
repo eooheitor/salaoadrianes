@@ -35,6 +35,10 @@
                                     <input type="text" value="{{ old('tamanho') }}" class="form-control" name="tamanho">
                                 </div>
                                 <div class="col-12">
+                                    <label for="" class="form-label">Valor</label>
+                                    <input type="text" value="{{ old('valor') }}" class="form-control" name="valor">
+                                </div>
+                                <div class="col-12">
                                     <label for="" class="form-label">CodProduto</label>
                                     <input type="text" value="{{ old('codproduto') }}" class="form-control"
                                         name="codproduto">

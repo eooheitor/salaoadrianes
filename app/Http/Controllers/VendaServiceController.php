@@ -11,19 +11,27 @@ use App\Models\VendaService;
 
 class VendaServiceController extends Controller
 {
+
+    public function RemoveVirgula($virg)
+    {
+        $virg = str_replace(",", ".", $virg);
+        return $virg;
+    }
+
     public function index()
     {
         $search = request('search', '');
 
         if ($search) {
             $vendaservicos = VendaService::where([
-                ['nome', 'like', '%' . $search . '%']
+                ['datavenda', 'like', '%' . $search . '%']
             ])->get();
         } else {
             $vendaservicos = VendaService::orderBy('id', 'desc')->get();
         }
 
         $venda = ServicoVendaService::with('servico')->get();
+
 
         // Inicialize um array para armazenar os produtos agrupados pelo vendaproduto_id
         $servicosAgrupados = [];
@@ -42,7 +50,9 @@ class VendaServiceController extends Controller
             $servicosAgrupados[$vendaservico_id]['servicos'][] = $servicoNome;
         }
 
-        return view('vendaservicos.vendaservicos', ['vendaservicos' => $vendaservicos, 'search' => $search, 'venda' => $servicosAgrupados]);
+        $profissionais = Professional::all();
+
+        return view('vendaservicos.vendaservicos', ['vendaservicos' => $vendaservicos, 'search' => $search, 'profissionais' => $profissionais, 'venda' => $servicosAgrupados]);
         // return view('vendaservicos.vendaservicos', ['vendaservicos' => $vendaservicos]);
     }
 
@@ -65,7 +75,7 @@ class VendaServiceController extends Controller
         $vendaservicos = new VendaService;
         $vendaservicos->cliente_id = $request->cliente_id;
         $vendaservicos->profissional_id = $request->profissional_id;
-        $vendaservicos->valor = $request->valor;
+        $vendaservicos->valor = VendaServiceController::RemoveVirgula($request->valor);
         $vendaservicos->metodopagamento = $request->metodopagamento;
         $vendaservicos->datavenda = $request->datavenda;
 
@@ -115,7 +125,7 @@ class VendaServiceController extends Controller
 
         $vendaservicos->cliente_id = $request->cliente_id;
         $vendaservicos->profissional_id = $request->profissional_id;
-        $vendaservicos->valor = $request->valor;
+        $vendaservicos->valor = VendaServiceController::RemoveVirgula($request->valor);
         $vendaservicos->metodopagamento = $request->metodopagamento;
         $vendaservicos->datavenda = $request->datavenda;
 

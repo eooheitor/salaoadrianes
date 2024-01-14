@@ -28,6 +28,16 @@
     .mr {
         margin-left: -30px !important
     }
+
+    table {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    table td {
+        word-wrap: break-word;
+        font-size: 12px;
+    }
 </style>
 
 <body>

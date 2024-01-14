@@ -11,21 +11,21 @@ class PdfProdutoController extends Controller
 {
     public function geraPDF(Request $request)
     {
-        // $startDate = $request->input('start_date');
-        // $endDate = $request->input('end_date');
-
-        // $vendaprodutos = VendaProduct::whereBetween('datavenda', [$startDate, $endDate])->get();
-
-        // $venda = ProdutoVendaProduct::with('produto')->get();
-
         $startDate = $request->input('start_date');
         $endDate = $request->input('end_date');
         $metodoPagamento = $request->input('metodopagamento');
+        $profissional = $request->input('profissional');
 
         $query = VendaProduct::whereBetween('datavenda', [$startDate, $endDate]);
 
         if ($metodoPagamento) {
             $query->where('metodopagamento', $metodoPagamento);
+        }
+
+        if ($profissional) {
+            $query->whereHas('profissional', function ($queryProfissional) use ($profissional) {
+                $queryProfissional->where('nome', $profissional);
+            });
         }
 
         $vendaprodutos = $query->get();

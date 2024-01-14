@@ -25,6 +25,10 @@
                             <input type="text" class="form-control" name="tamanho" value="{{ $product->tamanho }}">
                         </div>
                         <div class="col-12">
+                            <label for="inputPassword4" class="form-label">Valor</label>
+                            <input type="text" class="form-control" name="valor" value="{{ $product->valor }}">
+                        </div>
+                        <div class="col-12">
                             <label for="" class="form-label">CodProduto</label>
                             <input type="text" class="form-control" name="codproduto" value="{{ $product->codproduto }}">
                         </div>

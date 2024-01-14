@@ -8,6 +8,13 @@ use App\Models\Product; // Use "Product" (singular)
 
 class ProdutoController extends Controller
 {
+
+    public function RemoveVirgula($virg)
+    {
+        $virg = str_replace(",", ".", $virg);
+        return $virg;
+    }
+
     public function index()
     {
         $search = request('search', ''); // Defina '' como valor padrão se não houver 'search' na requisição
@@ -30,6 +37,7 @@ class ProdutoController extends Controller
             'nome.required' => 'O campo nome é obrigatório',
             'quantidade.required' => 'O campo quantidade é obrigatório',
             'tamanho.required' => 'O campo tamanho é obrigatório',
+            'valor.required' => 'O campo valor é obrigatório',
             'codproduto.required' => 'O campo codproduto é obrigatório',
             'datacompra.required' => 'O campo datacompra é obrigatório',
         ];
@@ -38,6 +46,7 @@ class ProdutoController extends Controller
             'nome' => 'required',
             'quantidade' => 'required',
             'tamanho' => 'required',
+            'valor' => 'required',
             'codproduto' => 'required',
             'datacompra' => 'required',
         ], $messages);
@@ -47,6 +56,7 @@ class ProdutoController extends Controller
         $products->nome = $request->nome;
         $products->quantidade = $request->quantidade;
         $products->tamanho = $request->tamanho;
+        $products->valor = ProdutoController::RemoveVirgula($request->valor);
         $products->codproduto = $request->codproduto;
         $products->datacompra = $request->datacompra;
 
@@ -83,6 +93,7 @@ class ProdutoController extends Controller
         $products->nome = $request->input('nome');
         $products->quantidade = $request->input('quantidade');
         $products->tamanho = $request->input('tamanho');
+        $products->valor = ProdutoController::RemoveVirgula($request->input('valor'));
         $products->codproduto = $request->input('codproduto');
         $products->datacompra = $request->input('datacompra');
 

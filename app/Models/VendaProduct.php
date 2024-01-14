@@ -21,4 +21,9 @@ class VendaProduct extends Model
         return $this->belongsTo(Professional::class, 'profissional_id', 'id');
     }
 
+    // Relação com a tabela produto_vendaproduto
+    public function produtos()
+    {
+        return $this->hasMany(ProdutoVendaProduct::class, 'vendaproduto_id')->onDelete('cascade');
+    }
 }

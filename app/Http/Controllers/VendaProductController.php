@@ -12,13 +12,19 @@ use App\Models\VendaProduct;
 class VendaProductController extends Controller
 {
 
+    public function RemoveVirgula($virg)
+    {
+        $virg = str_replace(",", ".", $virg);
+        return $virg;
+    }
+
     public function index()
     {
         $search = request('search', ''); // Defina '' como valor padrão se não houver 'search' na requisição
 
         if ($search) {
             $vendaprodutos = VendaProduct::where([
-                ['nome', 'like', '%' . $search . '%']
+                ['datavenda', 'like', '%' . $search . '%']
             ])->get();
         } else {
             $vendaprodutos = VendaProduct::orderBy('id', 'desc')->get();
@@ -43,7 +49,9 @@ class VendaProductController extends Controller
             $produtosAgrupados[$vendaproduto_id]['produtos'][] = $produtoNome;
         }
 
-        return view('vendaprodutos.vendaprodutos', ['vendaprodutos' => $vendaprodutos, 'search' => $search, 'venda' => $produtosAgrupados]);
+        $profissionais = Professional::all();
+
+        return view('vendaprodutos.vendaprodutos', ['vendaprodutos' => $vendaprodutos, 'search' => $search, 'venda' => $produtosAgrupados, 'profissionais' => $profissionais]);
     }
 
 
@@ -67,7 +75,7 @@ class VendaProductController extends Controller
         $vendaprodutos = new VendaProduct;
         $vendaprodutos->cliente_id = $request->cliente_id;
         $vendaprodutos->profissional_id = $request->profissional_id;
-        $vendaprodutos->valor = $request->valor;
+        $vendaprodutos->valor = VendaProductController::RemoveVirgula($request->valor);
         $vendaprodutos->metodopagamento = $request->metodopagamento;
         $vendaprodutos->tipopessoa = $request->tipopessoa;
         $vendaprodutos->datavenda = $request->datavenda;
@@ -120,7 +128,7 @@ class VendaProductController extends Controller
 
         $vendaprodutos->cliente_id = $request->cliente_id;
         $vendaprodutos->profissional_id = $request->profissional_id;
-        $vendaprodutos->valor = $request->valor;
+        $vendaprodutos->valor = VendaProductController::RemoveVirgula($request->valor);
         $vendaprodutos->metodopagamento = $request->metodopagamento;
         $vendaprodutos->tipopessoa = $request->tipopessoa;
         $vendaprodutos->datavenda = $request->datavenda;
