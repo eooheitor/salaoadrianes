@@ -50,16 +50,16 @@
                                                     <td>
 
                                                         <button type="button" class="btn-icon" data-toggle="modal"
-                                                            data-target="#modalExemplo"><i class="bi bi-trash"></i></button>
+                                                            data-target="#modalExemplo-{{ $client->id }}"><i class="bi bi-trash"></i></button>
 
                                                         <!-- Modal -->
-                                                        <div class="modal fade" id="modalExemplo" tabindex="-1"
-                                                            role="dialog" aria-labelledby="exampleModalLabel"
+                                                        <div class="modal fade" id="modalExemplo-{{ $client->id }}" tabindex="-1"
+                                                            role="dialog" aria-labelledby="exampleModalLabel-{{ $client->id }}"
                                                             aria-hidden="true">
                                                             <div class="modal-dialog" role="document">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
-                                                                        <h5 class="modal-title" id="exampleModalLabel">
+                                                                        <h5 class="modal-title" id="exampleModalLabel-{{ $client->id }}">
                                                                             Excluir <i class="bi bi-trash"></i> </h5>
                                                                         <button type="button" class="close"
                                                                             data-dismiss="modal" aria-label="Fechar">
