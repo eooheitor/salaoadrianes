@@ -9,50 +9,53 @@
 
                         <div class="card mt-2">
                             <div class="card-body">
-                                <h5 class="card-title">Tabela de Serviços</h5>
+                                <h5 class="card-title">Tabela de Créditos</h5>
                                 <div class="col-md-12 d-flex justify-content-between">
                                     <div class="botao">
-                                        <a href="/servicos/create"><button
+                                        <a href="/creditos/create"><button
                                                 class="btn btn-primary btn-1">Cadastrar</button></a>
                                     </div>
                                     <form action="" method="GET">
-                                        <input type="text" id="search" name="search" placeholder="Procure um Serviço"
+                                        <input type="text" id="search" name="search" placeholder="Procure um crédito"
                                             class="form-control mb-4">
-                                        <!-- <button type="submit" class="btn btn-primary">Enviar</button> -->
                                     </form>
                                 </div>
                                 <div class="table-responsive">
                                     <table class="table table-striped text-left">
                                         <thead>
-                                            @if (count($servicos) == 0 && $search)
-                                                <h5 class="">Não há nenhum Serviço com o nome {{ $search }} <a
-                                                        href="/servicos"><button class="btn btn-secondary">Ver
+                                            @if (count($creditos) == 0 && $search)
+                                                <h5 class="">Não há nenhum Crrédito com o nome {{ $search }} <a
+                                                        href="/creditos"><button class="btn btn-secondary">Ver
                                                             todos</button></a></h5>
-                                            @elseif(count($servicos) == 0)
-                                                <h2 class="">Não há Serviços cadastrados</h2>
+                                            @elseif(count($creditos) == 0)
+                                                <h2 class="">Não há Créditos cadastrados</h2>
                                             @else
                                                 <tr>
                                                     <th scope="col"></th>
                                                     <th scope="col">#</th>
-                                                    <th scope="col">Serviço</th>
+                                                    <th scope="col">Nome</th>
+                                                    <th scope="col">Valor</th>
                                                 </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($servicos as $servico)
+                                            @foreach ($creditos as $credito)
                                                 <tr>
                                                     <td>
 
                                                         <button type="button" class="btn-icon" data-toggle="modal"
-                                                            data-target="#modalExemplo-{{ $servico->id }}"><i class="bi bi-trash"></i></button>
+                                                            data-target="#modalExemplo-{{ $credito->id }}"><i
+                                                                class="bi bi-trash"></i></button>
 
                                                         <!-- Modal -->
-                                                        <div class="modal fade" id="modalExemplo-{{ $servico->id }}" tabindex="-1"
-                                                            role="dialog" aria-labelledby="exampleModalLabel-{{ $servico->id }}"
+                                                        <div class="modal fade" id="modalExemplo-{{ $credito->id }}"
+                                                            tabindex="-1" role="dialog"
+                                                            aria-labelledby="exampleModalLabel-{{ $credito->id }}"
                                                             aria-hidden="true">
                                                             <div class="modal-dialog" role="document">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
-                                                                        <h5 class="modal-title" id="exampleModalLabel-{{ $servico->id }}">
+                                                                        <h5 class="modal-title"
+                                                                            id="exampleModalLabel-{{ $credito->id }}">
                                                                             Excluir <i class="bi bi-trash"></i> </h5>
                                                                         <button type="button" class="close"
                                                                             data-dismiss="modal" aria-label="Fechar">
@@ -66,7 +69,7 @@
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-secondary"
                                                                             data-dismiss="modal">Fechar</button>
-                                                                        <form action="/servicos/{{ $servico->id }}"
+                                                                        <form action="/creditos/{{ $credito->id }}"
                                                                             method="POST">
                                                                             @csrf
                                                                             @method('DELETE')
@@ -77,13 +80,13 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <a href="{{ route('servicos.edit', ['id' => $servico->id]) }}">
+                                                        <a href="{{ route('creditos.edit', ['id' => $credito->id]) }}">
                                                             <button class="btn-icon2"><i
                                                                     class="bi bi-pencil-square"></i></button></a>
                                                     </td>
-                                                    <th scope="row">{{ $servico->id }}</th>
-                                                    <td>{{ $servico->nome }}</td>
-                                                    <td></td>
+                                                    <th scope="row">{{ $credito->id }}</th>
+                                                    <td>{{ $credito->nome }}</td>
+                                                    <td>{{ $credito->valor }}</td>
                                                     <td></td>
                                                     <td></td>
                                                     <td></td>

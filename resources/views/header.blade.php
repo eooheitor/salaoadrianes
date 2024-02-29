@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -114,7 +113,6 @@
                 }
                 ?>
                 <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                    {{-- <img src="/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle"> --}}
                     <span class="d-none d-md-block dropdown-toggle ps-2">{{ $nome }}</span>
                 </a><!-- End Profile Iamge Icon -->
 
@@ -155,13 +153,14 @@
 
     <ul class="sidebar-nav mt-5" id="sidebar-nav">
 
-        <li class="nav-item active">
-            <a class="nav-link collapsed" data-bs-target="#cadastro-nav" data-bs-toggle="collapse" href="#">
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#cadastro-nav" data-bs-toggle="collapse" href="#"
+                aria-expanded="true">
                 <i class="bi bi-layout-text-window-reverse"></i><span>Cadastro</span><i
                     class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="cadastro-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-                <li>
+                <li class="">
                     <a class="" href="/produtos">
                         <i class="bi bi-basket"></i><span>Produtos</span>
                     </a>
@@ -180,7 +179,12 @@
 
                 <li>
                     <a href="/servicos">
-                        <i class="bi bi-arrow-right"></i><span>Serviços</span>
+                        <i class="bi bi-database-fill-up"></i></i><span>Serviços</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/creditos">
+                        <i class="bi bi-cash"></i><span>Créditos</span>
                     </a>
                 </li>
             </ul>

@@ -57,16 +57,19 @@
                                                     <td>
 
                                                         <button type="button" class="btn-icon" data-toggle="modal"
-                                                            data-target="#modalExemplo-{{ $vendaproduto->id }}"><i class="bi bi-trash"></i></button>
+                                                            data-target="#modalExemplo-{{ $vendaproduto->id }}"><i
+                                                                class="bi bi-trash"></i></button>
 
                                                         <!-- Modal -->
-                                                        <div class="modal fade" id="modalExemplo-{{ $vendaproduto->id }}" tabindex="-1"
-                                                            role="dialog" aria-labelledby="exampleModalLabel-{{ $vendaproduto->id }}"
+                                                        <div class="modal fade" id="modalExemplo-{{ $vendaproduto->id }}"
+                                                            tabindex="-1" role="dialog"
+                                                            aria-labelledby="exampleModalLabel-{{ $vendaproduto->id }}"
                                                             aria-hidden="true">
                                                             <div class="modal-dialog" role="document">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
-                                                                        <h5 class="modal-title" id="exampleModalLabel-{{ $vendaproduto->id }}">
+                                                                        <h5 class="modal-title"
+                                                                            id="exampleModalLabel-{{ $vendaproduto->id }}">
                                                                             Excluir <i class="bi bi-trash"></i> </h5>
                                                                         <button type="button" class="close"
                                                                             data-dismiss="modal" aria-label="Fechar">
@@ -124,6 +127,11 @@
                                         </tbody>
                                         {{-- @endif --}}
                                     </table>
+                                    <?php
+                                    if (!$search) {
+                                        $vendaprodutos->onEachSide(0)->links();
+                                    }
+                                    ?>
                                 </div>
                                 <form action="{{ route('geraPDF') }}" method="post" class="form-inline">
                                     @csrf

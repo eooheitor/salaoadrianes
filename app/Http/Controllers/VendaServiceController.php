@@ -27,7 +27,7 @@ class VendaServiceController extends Controller
                 ['datavenda', 'like', '%' . $search . '%']
             ])->get();
         } else {
-            $vendaservicos = VendaService::orderBy('id', 'desc')->get();
+            $vendaservicos = VendaService::orderBy('id', 'desc')->paginate(40);
         }
 
         $venda = ServicoVendaService::with('servico')->get();

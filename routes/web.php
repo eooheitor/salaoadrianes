@@ -13,6 +13,7 @@ use App\Http\Controllers\VendaServiceController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\PdfProdutoController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\CreditoController;
 
 Route::middleware(['auth'])->group(function () {
 
@@ -66,6 +67,16 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('/{id}', [ServicoController::class, 'destroy']);
         Route::get('/edit/{id}', [ServicoController::class, 'edit'])->name('servicos.edit');
         Route::put('/update/{id}', [ServicoController::class, 'update'])->name('servicos.update');
+    });
+
+    // Rotas para CREDITOS
+    Route::prefix('creditos')->group(function () {
+        Route::get('/create', [CreditoController::class, 'create']);
+        Route::get('/', [CreditoController::class, 'index']);
+        Route::post('/', [CreditoController::class, 'store']);
+        Route::delete('/{id}', [CreditoController::class, 'destroy']);
+        Route::get('/edit/{id}', [CreditoController::class, 'edit'])->name('creditos.edit');
+        Route::put('/update/{id}', [CreditoController::class, 'update'])->name('creditos.update');
     });
 
     // Rotas para VENDA DE SERVIÇOS

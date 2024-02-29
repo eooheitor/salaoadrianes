@@ -27,7 +27,7 @@ class VendaProductController extends Controller
                 ['datavenda', 'like', '%' . $search . '%']
             ])->get();
         } else {
-            $vendaprodutos = VendaProduct::orderBy('id', 'desc')->get();
+            $vendaprodutos = VendaProduct::orderBy('id', 'desc')->paginate(40);
         }
 
         $venda = ProdutoVendaProduct::with('produto')->get();

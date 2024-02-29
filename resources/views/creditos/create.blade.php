@@ -8,7 +8,7 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Cadastre um Serviço</h5>
+                            <h5 class="card-title">Cadastre um Crédito</h5>
                             @if ($errors->any())
                                 <div class="alert alert-danger">
                                     <ul>
@@ -19,19 +19,22 @@
                                 </div>
                             @endif
                             <!-- Vertical Form -->
-                            <form id="form-servico" class="row g-3" action="/servicos" method="POST">
+                            <form id="form-credito" class="row g-3" action="/creditos" method="POST">
                                 @csrf
                                 <div class="col-12">
-                                    <label for="" class="form-label">Nome Serviço</label>
+                                    <label for="" class="form-label">Nome</label>
                                     <input type="text" value="{{old('nome')}}" class="form-control" name="nome">
                                 </div>
+                                <div class="col-12">
+                                  <label for="" class="form-label">Valor</label>
+                                  <input type="text" value="{{old('valor')}}" class="form-control" name="valor">
+                              </div>
                                 <div class="">
                                     <button type="submit" class="btn btn-primary btn-1">Cadastrar</button>
-                                    <!-- <button type="reset" class="btn btn-secondary">Limpar</button> -->
                                 </div>
-                            </form><!-- Vertical Form -->
+                            </form>
                             <div class="col-12 mt-2">
-                                <a href="/servicos"> <button class="btn btn-primary btn-1 btn-back"><i
+                                <a href="/creditos"> <button class="btn btn-primary btn-1 btn-back"><i
                                             class="bi bi-skip-backward-fill mr-2"></i>Voltar</button></a>
                             </div>
                         </div>
