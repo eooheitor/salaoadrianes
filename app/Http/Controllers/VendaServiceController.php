@@ -72,6 +72,23 @@ class VendaServiceController extends Controller
     public function store(Request $request)
     {
 
+        $messages = [
+            'servico_id.required' => 'O campo Serviços é obrigatório',
+            'cliente_id.required' => 'O campo Clientes é obrigatório',
+            'profissional_id.required' => 'O campo Profissional é obrigatório',
+            'valor.required' => 'O campo Valor é obrigatório',
+            'metodopagamento.required' => 'O campo Método Pagamento é obrigatório',
+            'datavenda.required' => 'O campo Data Venda é obrigatório',
+        ];
+
+        $request->validate([
+            'servico_id' => 'required',
+            'cliente_id' => 'required',
+            'profissional_id' => 'required',
+            'metodopagamento' => 'required',
+            'datavenda' => 'required',
+        ], $messages);
+
         $vendaservicos = new VendaService;
         $vendaservicos->cliente_id = $request->cliente_id;
         $vendaservicos->profissional_id = $request->profissional_id;

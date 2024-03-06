@@ -106,38 +106,39 @@
         <ul class="d-flex align-items-center">
 
             <li class="nav-item dropdown pe-3">
-                <?php $user = Auth::user();
-                
-                if ($user) {
-                    $nome = $user->name;
-                }
-                ?>
+                @php
+                    $user = Auth::user();
+
+                    if ($user) {
+                        $nome = $user->name;
+                    }
+                @endphp
+
                 <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                     <span class="d-none d-md-block dropdown-toggle ps-2">{{ $nome }}</span>
-                </a><!-- End Profile Iamge Icon -->
+                </a>
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-                    <?php if (Auth::check()) {
-                        // O usuário está autenticado
-                    ?>
-                    <li>
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <x-dropdown-link :href="route('logout')"
-                                onclick="event.preventDefault();
-                                                this.closest('form').submit();"
-                                class="dropdown-item">
-                                {{ __('Sair') }}
-                            </x-dropdown-link>
-                        </form>
-                    </li>
-                    <?php } ?>
+                    @if (Auth::check())
+                        <li class="">
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="dropdown-item">{{ __('Sair') }}</button>
+                            </form>
+                        </li>
+                    @endif
                     <li>
                         <a class="dropdown-item" href="{{ route('register') }}"
                             onclick="event.preventDefault(); window.location.href='{{ route('register') }}';">
                             {{ __('Criar conta') }}
                         </a>
                     </li>
+
+                    {{-- <li>
+                        <a class="dropdown-item" href="{{ route('password.request') }}">
+                            {{ __('Trocar senha') }}
+                        </a>
+                    </li> --}}
 
                 </ul>
 

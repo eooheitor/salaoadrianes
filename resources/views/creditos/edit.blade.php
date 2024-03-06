@@ -17,8 +17,16 @@
                             <input type="text" class="form-control" name="nome" value="{{ $credito->nome }}">
                         </div>
                         <div class="col-12">
-                            <label for="" class="form-label">Nome</label>
+                            <label for="" class="form-label">Valor</label>
                             <input type="text" class="form-control" name="valor" value="{{ $credito->valor }}">
+                        </div>
+                        <div class="col-12">
+                            <label for="" class="form-label">Status</label>
+                            <select name="status" id="" class="form-control">
+                                <option value="" selected disabled>Selecione</option>
+                                <option value="Débito" {{ $credito->status === 'Débito' ? 'selected' : '' }}>Débito</option>
+                                <option value="Crédito" {{ $credito->status === 'Crédito' ? 'selected' : '' }}>Crédito</option>
+                            </select>
                         </div>
                         <div class="">
                             <button type="submit" class="btn btn-primary btn-1">Salvar</button>

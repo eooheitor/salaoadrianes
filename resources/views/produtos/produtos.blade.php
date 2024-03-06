@@ -89,24 +89,23 @@
                                                                     class="bi bi-pencil-square"></i></button></a>
                                                     </td>
                                                     <th scope="row">{{ $product->id }}</th>
-                                                    <td>{{ $product->nome }}</td>
-                                                    <td>{{ $product->quantidade }}</td>
-                                                    <td>{{ $product->tamanho }}</td>
-                                                    <td>{{ $product->valor }}</td>
-                                                    <td>{{ $product->codproduto }}</td>
-                                                    <td>{{ date('d/m/Y', strtotime($product->datacompra)) }}</td>
-                                                    {{-- <td>
-                                                        <form action="/produtos/{{ $product->id }}" method="POST">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger">Excluir</button>
-                                                        </form>
-                                                    </td> --}}
+                                                    <td class="text-uppercase">{{ $product->nome }}</td>
+                                                    <td class="text-uppercase">{{ $product->quantidade }}</td>
+                                                    <td class="text-uppercase">{{ $product->tamanho }}</td>
+                                                    <td class="text-uppercase">{{ $product->valor }}</td>
+                                                    <td class="text-uppercase">{{ $product->codproduto }}</td>
+                                                    <td class="text-uppercase">{{ date('d/m/Y', strtotime($product->datacompra)) }}</td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
                                         @endif
                                     </table>
+                                    <div>
+                                        <?php
+                                        if (!$search) {
+                                            echo $products->onEachSide(0)->links();
+                                        } ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -29,19 +29,18 @@
                             <input type="text" class="form-control" name="cpf" value="{{ $client->cpf }}">
                         </div>
                         <div class="col-12">
-
-                            @if ($client->data)
-                                <?php
-                                $formattedDate = substr($client->data, 0, 10);
-                                ?>
-                            @else
-                                <?php
-                                $formattedDate = $client->data;
-                                ?>
-                            @endif
-
+                            @php
+                                $formattedDate = $client->data ? substr($client->data, 0, 10) : $client->data;
+                            @endphp
                             <label for="" class="form-label">Data Último Serviço</label>
                             <input type="date" class="form-control" name="data" value="{{ $formattedDate }}">
+                        </div>
+                        <div class="col-12">
+                            @php
+                                $formattedNascimento = $client->datanascimento ? substr($client->datanascimento, 0, 10) : $client->datanascimento;
+                            @endphp
+                            <label for="" class="form-label">Data de nascimento</label>
+                            <input type="date" class="form-control" name="datanascimento" value="{{ $formattedNascimento }}">
                         </div>
                         <div class="">
                             <button type="submit" class="btn btn-primary btn-1">Salvar</button>

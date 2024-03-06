@@ -35,6 +35,7 @@
                                                     <th scope="col">#</th>
                                                     <th scope="col">Nome</th>
                                                     <th scope="col">Valor</th>
+                                                    <th scope="col">Status</th>
                                                 </tr>
                                         </thead>
                                         <tbody>
@@ -85,9 +86,9 @@
                                                                     class="bi bi-pencil-square"></i></button></a>
                                                     </td>
                                                     <th scope="row">{{ $credito->id }}</th>
-                                                    <td>{{ $credito->nome }}</td>
+                                                    <td class="text-uppercase">{{ $credito->nome }}</td>
                                                     <td>{{ $credito->valor }}</td>
-                                                    <td></td>
+                                                    <td class="text-uppercase">{{ $credito->status }}</td>
                                                     <td></td>
                                                     <td></td>
                                                 </tr>

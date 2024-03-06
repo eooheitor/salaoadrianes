@@ -4,12 +4,24 @@
     <main id="main" class="">
         <div class="container">
             <div class="row">
+                @if ($errors->any())
+                    @foreach ($errors->all() as $index => $error)
+                        <div class="toast align-items-center text-white bg-danger border-0" role="alert"
+                            aria-live="assertive" aria-atomic="true" data-delay="{{ $index * 1000 }}">
+                            <div class="d-flex">
+                                <div class="toast-body">
+                                    {{ $error }}
+                                </div>
+                                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                                    aria-label="Close"></button>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
                 <div class="col-lg-10 offset-1">
-
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Cadastre a venda de um Produto</h5>
-
                             <!-- Vertical Form -->
                             <form class="row g-3" action="/vendaprodutos" method="POST">
                                 @csrf

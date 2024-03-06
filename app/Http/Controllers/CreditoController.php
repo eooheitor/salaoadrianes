@@ -35,18 +35,20 @@ class CreditoController extends Controller
         $messages = [
             'nome.required' => 'O campo nome é obrigatório',
             'valor.required' => 'O campo Valor é obrigatório',
+            'status.required' => 'O campo Status é obrigatório',
         ];
 
         $request->validate([
             'nome' => 'required',
             'valor' => 'required',
+            'status' => 'required',
         ], $messages);
 
         $creditos = new Credit;
 
         $creditos->nome = $request->nome;
         $creditos->valor = $this->RemoveVirgula($request->valor);
-
+        $creditos->status = $request->status;
         $creditos->save();
 
         $creditos = Credit::orderBy('id', 'desc')->get();
@@ -78,6 +80,7 @@ class CreditoController extends Controller
 
         $creditos->nome = $request->input('nome');
         $creditos->valor = $this->RemoveVirgula($request->input('valor'));
+        $creditos->status = $request->input('status');
         $creditos->save();
 
         return redirect('/creditos');

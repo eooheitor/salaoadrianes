@@ -1,22 +1,17 @@
-{{-- @extends('layouts.app') --}}
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-{{-- @section('content') --}}
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Criar conta') }}</div>
+@extends('header')
 
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
-                            @csrf
-
-                            <div class="row mb-3">
-                                <label for="name"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('Nome') }}</label>
-
-                                <div class="col-md-6">
+@section('content')
+    <main id="main">
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 offset-1">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Criar conta</h5>
+                            <form class="row g-3" method="POST" action="{{ route('register') }}">
+                                @csrf
+                                <div class="col-12">
+                                    <label for="name" class="">{{ __('Nome') }}</label>
                                     <input id="name" type="text"
                                         class="form-control @error('name') is-invalid @enderror" name="name"
                                         value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -27,13 +22,9 @@
                                         </span>
                                     @enderror
                                 </div>
-                            </div>
 
-                            <div class="row mb-3">
-                                <label for="email"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('Email') }}</label>
-
-                                <div class="col-md-6">
+                                <div class="col-12">
+                                    <label for="email" class="">{{ __('Email') }}</label>
                                     <input id="email" type="email"
                                         class="form-control @error('email') is-invalid @enderror" name="email"
                                         value="{{ old('email') }}" required autocomplete="email">
@@ -44,13 +35,10 @@
                                         </span>
                                     @enderror
                                 </div>
-                            </div>
 
-                            <div class="row mb-3">
-                                <label for="password"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('Senha') }}</label>
 
-                                <div class="col-md-6">
+                                <div class="col-12">
+                                    <label for="password" class="">{{ __('Senha') }}</label>
                                     <input id="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
                                         required autocomplete="new-password">
@@ -61,34 +49,22 @@
                                         </span>
                                     @enderror
                                 </div>
-                            </div>
 
-                            <div class="row mb-3">
-                                <label for="password-confirm"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('Confirme a senha') }}</label>
-
-                                <div class="col-md-6">
+                                <div class="col-12">
+                                    <label for="password-confirm" class="">{{ __('Confirme a senha') }}</label>
                                     <input id="password-confirm" type="password" class="form-control"
                                         name="password_confirmation" required autocomplete="new-password">
                                 </div>
-                            </div>
-
-                            <div class="row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary btn-1">
                                         {{ __('Register') }}
                                     </button>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-{{-- @endsection --}}
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-</script>
+    </main>
+@endsection

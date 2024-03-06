@@ -101,18 +101,18 @@
                                                             <button class="btn-icon2"><i
                                                                     class="bi bi-pencil-square"></i></button></a></td>
                                                     <th scope="row">{{ $vendaproduto->id }}</th>
-                                                    <td>
+                                                    <td class="text-uppercase">
                                                         @foreach ($venda as $grupo)
                                                             @if ($grupo['vendaproduto_id'] == $vendaproduto->id)
                                                                 {{ implode(', ', $grupo['produtos']) }}
                                                             @endif
                                                         @endforeach
                                                     </td>
-                                                    <td>{{ $vendaproduto->cliente->nome }}</td>
-                                                    <td>{{ $vendaproduto->profissional->nome }}</td>
-                                                    <td>{{ $vendaproduto->valor }}R$</td>
-                                                    <td>{{ $vendaproduto->metodopagamento }}</td>
-                                                    <td>{{ $vendaproduto->tipopessoa }}</td>
+                                                    <td class="text-uppercase">{{ $vendaproduto->cliente->nome }}</td>
+                                                    <td class="text-uppercase">{{ $vendaproduto->profissional->nome }}</td>
+                                                    <td class="">{{ $vendaproduto->valor }}R$</td>
+                                                    <td class="text-uppercase">{{ $vendaproduto->metodopagamento }}</td>
+                                                    <td class="text-uppercase">{{ $vendaproduto->tipopessoa }}</td>
 
                                                     <td>{{ $vendaproduto->profissional->comissao }}%</td>
                                                     <?php
@@ -129,7 +129,7 @@
                                     </table>
                                     <?php
                                     if (!$search) {
-                                        $vendaprodutos->onEachSide(0)->links();
+                                       echo $vendaprodutos->onEachSide(0)->links();
                                     }
                                     ?>
                                 </div>

@@ -100,7 +100,7 @@
                                                             <button class="btn-icon2"><i
                                                                     class="bi bi-pencil-square"></i></button></a></td>
                                                     <th scope="row">{{ $vendaservico->id }}</th>
-                                                    <td>
+                                                    <td class="text-uppercase">
                                                         @foreach ($venda as $grupo)
                                                             @if ($grupo['vendaservico_id'] == $vendaservico->id)
                                                                 {{ implode(', ', $grupo['servicos']) }}
@@ -108,11 +108,11 @@
                                                         @endforeach
                                                         {{-- Serviços --}}
                                                     </td>
-                                                    <td>{{ $vendaservico->cliente->nome }}</td>
-                                                    <td>{{ $vendaservico->profissional->nome }}</td>
-                                                    <td>{{ $vendaservico->valor }}R$</td>
-                                                    <td>{{ $vendaservico->metodopagamento }}</td>
-                                                    <td>{{ $vendaservico->profissional->comissao }}%</td>
+                                                    <td class="text-uppercase">{{ $vendaservico->cliente->nome }}</td>
+                                                    <td class="text-uppercase">{{ $vendaservico->profissional->nome }}</td>
+                                                    <td class="">{{ $vendaservico->valor }}R$</td>
+                                                    <td class="text-uppercase">{{ $vendaservico->metodopagamento }}</td>
+                                                    <td class="">{{ $vendaservico->profissional->comissao }}%</td>
                                                     <?php
                                                     $porcentagem = ($vendaservico->valor * $vendaservico->profissional->comissao) / 100;
                                                     ?>
@@ -124,12 +124,12 @@
                                         </tbody>
                                         @endif
                                     </table>
-
-                                    <?php
-                                    if (!$search) {
-                                        $vendaservicos->onEachSide(0)->links();
-                                    }
-                                    ?>
+                                    <div class="">
+                                        <?php
+                                        if (!$search) {
+                                            echo $vendaservicos->onEachSide(0)->links();
+                                        } ?>
+                                    </div>
                                 </div>
 
 

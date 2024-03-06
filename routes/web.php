@@ -13,6 +13,8 @@ use App\Http\Controllers\VendaServiceController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\PdfProdutoController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\CreditoController;
 
 Route::middleware(['auth'])->group(function () {
@@ -102,9 +104,6 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 
-Route::get('/{sUrlParam}', function ($sUrlParam) {
-    if ($sUrlParam == 'home') {
-        return Redirect::to('/');
-    }
-    // ... outras rotas e lógica
+Route::get('/{sUrlParam}', function () {
+    return request()->has('sUrlParam') ? null : redirect('/'); //verifica se existe a pagina
 })->where('sUrlParam', '.*');

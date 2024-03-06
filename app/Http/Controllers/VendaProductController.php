@@ -72,6 +72,25 @@ class VendaProductController extends Controller
     public function store(Request $request)
     {
 
+        $messages = [
+            'produto_id.required' => 'O campo Produtos é obrigatório',
+            'cliente_id.required' => 'O campo Clientes é obrigatório',
+            'profissional_id.required' => 'O campo Profissional é obrigatório',
+            'valor.required' => 'O campo Valor é obrigatório',
+            'metodopagamento.required' => 'O campo Método Pagamento é obrigatório',
+            'tipopessoa.required' => 'O campo Tipo Pessoa é obrigatório',
+            'datavenda.required' => 'O campo Data Venda é obrigatório',
+        ];
+
+        $request->validate([
+            'produto_id' => 'required',
+            'cliente_id' => 'required',
+            'profissional_id' => 'required',
+            'metodopagamento' => 'required',
+            'tipopessoa' => 'required',
+            'datavenda' => 'required',
+        ], $messages);
+
         $vendaprodutos = new VendaProduct;
         $vendaprodutos->cliente_id = $request->cliente_id;
         $vendaprodutos->profissional_id = $request->profissional_id;

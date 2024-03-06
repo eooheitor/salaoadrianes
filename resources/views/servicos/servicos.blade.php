@@ -43,16 +43,19 @@
                                                     <td>
 
                                                         <button type="button" class="btn-icon" data-toggle="modal"
-                                                            data-target="#modalExemplo-{{ $servico->id }}"><i class="bi bi-trash"></i></button>
+                                                            data-target="#modalExemplo-{{ $servico->id }}"><i
+                                                                class="bi bi-trash"></i></button>
 
                                                         <!-- Modal -->
-                                                        <div class="modal fade" id="modalExemplo-{{ $servico->id }}" tabindex="-1"
-                                                            role="dialog" aria-labelledby="exampleModalLabel-{{ $servico->id }}"
+                                                        <div class="modal fade" id="modalExemplo-{{ $servico->id }}"
+                                                            tabindex="-1" role="dialog"
+                                                            aria-labelledby="exampleModalLabel-{{ $servico->id }}"
                                                             aria-hidden="true">
                                                             <div class="modal-dialog" role="document">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
-                                                                        <h5 class="modal-title" id="exampleModalLabel-{{ $servico->id }}">
+                                                                        <h5 class="modal-title"
+                                                                            id="exampleModalLabel-{{ $servico->id }}">
                                                                             Excluir <i class="bi bi-trash"></i> </h5>
                                                                         <button type="button" class="close"
                                                                             data-dismiss="modal" aria-label="Fechar">
@@ -82,7 +85,7 @@
                                                                     class="bi bi-pencil-square"></i></button></a>
                                                     </td>
                                                     <th scope="row">{{ $servico->id }}</th>
-                                                    <td>{{ $servico->nome }}</td>
+                                                    <td class="text-uppercase">{{ $servico->nome }}</td>
                                                     <td></td>
                                                     <td></td>
                                                     <td></td>
@@ -92,6 +95,10 @@
                                         </tbody>
                                         @endif
                                     </table>
+                                    <?php
+                                    if (!$search) {
+                                        echo $servicos->onEachSide(0)->links();
+                                    } ?>
                                 </div>
                             </div>
                         </div>

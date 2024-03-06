@@ -24,7 +24,7 @@ class ProdutoController extends Controller
                 ['nome', 'like', '%' . $search . '%']
             ])->get();
         } else {
-            $products = Product::orderBy('id', 'desc')->get();
+            $products = Product::orderBy('id', 'desc')->paginate(20);
         }
 
         return view('produtos.produtos', ['products' => $products, 'search' => $search]);

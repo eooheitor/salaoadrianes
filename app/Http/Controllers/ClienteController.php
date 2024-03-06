@@ -17,7 +17,7 @@ class ClienteController extends Controller
                 ['nome', 'like', '%' . $search . '%']
             ])->get();
         } else {
-            $clients = Client::orderBy('id', 'desc')->get();
+            $clients = Client::orderBy('id', 'desc')->paginate(20);
         }
         return view('clientes.clientes', ['clients' => $clients, 'search' => $search]);
     }
@@ -48,10 +48,10 @@ class ClienteController extends Controller
         $client->telefone = $request->telefone;
         $client->cpf = $request->cpf;
         $client->data = $request->data;
+        $client->datanascimento = $request->datanascimento;
 
         $client->save();
 
-        // Recupere todos os clientes após salvar o novo cliente
         $client = Client::orderBy('id', 'desc')->get();
 
         return redirect('/clientes');
@@ -84,6 +84,7 @@ class ClienteController extends Controller
         $client->telefone = $request->input('telefone');
         $client->cpf = $request->input('cpf');
         $client->data = $request->input('data');
+        $client->datanascimento = $request->input('datanascimento');
 
         $client->save();
 

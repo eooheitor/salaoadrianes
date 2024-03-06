@@ -17,7 +17,7 @@ class ServicoController extends Controller
                 ['nome', 'like', '%' . $search . '%']
             ])->get();
         } else {
-            $servicos = Service::orderBy('id', 'desc')->get();
+            $servicos = Service::orderBy('id', 'desc')->paginate(20);
         }
 
         return view('servicos.servicos', ['servicos' => $servicos, 'search' => $search]);

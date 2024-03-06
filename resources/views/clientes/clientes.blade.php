@@ -41,6 +41,7 @@
                                                     <th scope="col">Telefone</th>
                                                     <th scope="col">CPF</th>
                                                     <th scope="col">Data Último Serviço</th>
+                                                    <th scope="col">Data de nascimento</th>
                                                     <!-- <th scope="col">Data/Último Serviço </th> -->
                                                 </tr>
                                         </thead>
@@ -50,16 +51,19 @@
                                                     <td>
 
                                                         <button type="button" class="btn-icon" data-toggle="modal"
-                                                            data-target="#modalExemplo-{{ $client->id }}"><i class="bi bi-trash"></i></button>
+                                                            data-target="#modalExemplo-{{ $client->id }}"><i
+                                                                class="bi bi-trash"></i></button>
 
                                                         <!-- Modal -->
-                                                        <div class="modal fade" id="modalExemplo-{{ $client->id }}" tabindex="-1"
-                                                            role="dialog" aria-labelledby="exampleModalLabel-{{ $client->id }}"
+                                                        <div class="modal fade" id="modalExemplo-{{ $client->id }}"
+                                                            tabindex="-1" role="dialog"
+                                                            aria-labelledby="exampleModalLabel-{{ $client->id }}"
                                                             aria-hidden="true">
                                                             <div class="modal-dialog" role="document">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
-                                                                        <h5 class="modal-title" id="exampleModalLabel-{{ $client->id }}">
+                                                                        <h5 class="modal-title"
+                                                                            id="exampleModalLabel-{{ $client->id }}">
                                                                             Excluir <i class="bi bi-trash"></i> </h5>
                                                                         <button type="button" class="close"
                                                                             data-dismiss="modal" aria-label="Fechar">
@@ -89,18 +93,22 @@
                                                     </td>
 
                                                     <th scope="row">{{ $client->id }}</th>
-                                                    <td>{{ $client->nome }}</td>
-                                                    <td>{{ $client->cidade }}</td>
-                                                    <td>{{ $client->telefone }}</td>
-                                                    <td>{{ $client->cpf }}</td>
+                                                    <td class="text-uppercase">{{ $client->nome }}</td>
+                                                    <td class="text-uppercase">{{ $client->cidade }}</td>
+                                                    <td class="text-uppercase">{{ $client->telefone }}</td>
+                                                    <td class="text-uppercase">{{ $client->cpf }}</td>
                                                     <td>{{ date('d/m/Y', strtotime($client->data)) }}</td>
+                                                    <td>{{ date('d/m/Y', strtotime($client->datanascimento)) }}</td>
 
                                                 </tr>
                                             @endforeach
                                         </tbody>
                                         @endif
                                     </table>
-                                    {{-- <a href="/clientes/create"><button class="btn btn-primary btn-1">Cadastrar</button></a> --}}
+                                    <?php
+                                    if (!$search) {
+                                        echo $clients->onEachSide(0)->links();
+                                    } ?>
                                 </div>
                             </div>
                         </div>
@@ -111,3 +119,11 @@
 
     </main>
 @endsection
+
+<script>
+    window.onload = () => {
+        let myAlert = document.querySelector('.toast')
+        let bsAlert = new bootstrap.Toast(myAlert);
+        bsAlert.show();
+    }
+</script>

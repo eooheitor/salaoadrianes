@@ -83,7 +83,7 @@
                                                                     class="bi bi-pencil-square"></i></button></a>
                                                     </td>
                                                     <th scope="row">{{ $profissional->id }}</th>
-                                                    <td>{{ $profissional->nome }}</td>
+                                                    <td class="text-uppercase">{{ $profissional->nome }}</td>
                                                     <td>{{ $profissional->comissao }}</td>
                                                 </tr>
                                             @endforeach
