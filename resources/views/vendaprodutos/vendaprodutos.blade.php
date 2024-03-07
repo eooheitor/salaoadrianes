@@ -110,7 +110,7 @@
                                                     </td>
                                                     <td class="text-uppercase">{{ $vendaproduto->cliente->nome }}</td>
                                                     <td class="text-uppercase">{{ $vendaproduto->profissional->nome }}</td>
-                                                    <td class="">{{ $vendaproduto->valor }}R$</td>
+                                                    <td class="">{{ number_format($vendaproduto->valor, 2, ',', '.') }}R$</td>
                                                     <td class="text-uppercase">{{ $vendaproduto->metodopagamento }}</td>
                                                     <td class="text-uppercase">{{ $vendaproduto->tipopessoa }}</td>
 
@@ -129,7 +129,7 @@
                                     </table>
                                     <?php
                                     if (!$search) {
-                                       echo $vendaprodutos->onEachSide(0)->links();
+                                        echo $vendaprodutos->onEachSide(0)->links();
                                     }
                                     ?>
                                 </div>

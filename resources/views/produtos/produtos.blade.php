@@ -92,7 +92,7 @@
                                                     <td class="text-uppercase">{{ $product->nome }}</td>
                                                     <td class="text-uppercase">{{ $product->quantidade }}</td>
                                                     <td class="text-uppercase">{{ $product->tamanho }}</td>
-                                                    <td class="text-uppercase">{{ $product->valor }}</td>
+                                                    <td class="text-uppercase">{{ number_format($product->valor, 2, ',', '.') }}</td>
                                                     <td class="text-uppercase">{{ $product->codproduto }}</td>
                                                     <td class="text-uppercase">{{ date('d/m/Y', strtotime($product->datacompra)) }}</td>
                                                 </tr>

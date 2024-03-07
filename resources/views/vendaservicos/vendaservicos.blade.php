@@ -110,7 +110,7 @@
                                                     </td>
                                                     <td class="text-uppercase">{{ $vendaservico->cliente->nome }}</td>
                                                     <td class="text-uppercase">{{ $vendaservico->profissional->nome }}</td>
-                                                    <td class="">{{ $vendaservico->valor }}R$</td>
+                                                    <td class="">{{ number_format($vendaservico->valor, 2, ',', '.') }}R$</td>
                                                     <td class="text-uppercase">{{ $vendaservico->metodopagamento }}</td>
                                                     <td class="">{{ $vendaservico->profissional->comissao }}%</td>
                                                     <?php

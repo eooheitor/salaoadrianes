@@ -77,7 +77,7 @@
                                         </td>
                                         <td>{{ $vendaservico->cliente->nome }}</td>
                                         <td>{{ $vendaservico->profissional->nome }}</td>
-                                        <td>{{ $vendaservico->valor }}R$</td>
+                                        <td>{{ number_format($vendaservico->valor, 2, ',', '.') }}R$</td>
                                         <td>{{ $vendaservico->metodopagamento }}</td>
                                         <td>{{ $vendaservico->profissional->comissao }}%</td>
                                         <td>{{ date('d/m/Y', strtotime($vendaservico->datavenda)) }}</td>
@@ -97,13 +97,13 @@
                             </tbody>
                         </table>
                     </div>
-                    <p>Valor Total: R$ {{ $totalVendasEmpresa }} </p>
+                    <p>Valor Total: R$ {{ number_format($totalVendasEmpresa, 2, ',', '.') }} </p>
 
                     @foreach ($totalPorProfissional as $profissionalId => $comissao)
                         @php
                             $profissional = App\Models\Professional::find($profissionalId);
                         @endphp
-                        <p>Comissão de {{ $profissional->nome }}: R$ {{ $comissao }}</p>
+                        <p>Comissão de {{ $profissional->nome }}: R$ {{ number_format($comissao, 2, ',', '.') }}</p>
                     @endforeach
 
                 </div>
